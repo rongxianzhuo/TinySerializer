@@ -1,0 +1,20 @@
+{
+  "name": "com.rongxianzhuo.tinyserializer",
+  "version": "1.0",
+  "displayName": "TinySerializer",
+  "description": "Tiny serializer.",
+  "category": "Runtime",
+  "documentationUrl": "",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "dependencies": {
+  },
+  "keywords": [
+    "Serialization"
+  ],
+  "author": {
+    "name": "Rong Xianzhuo",
+    "email": "rongxianzhuo@gmail.com",
+    "url": "https://github.com/rongxianzhuo"
+  }
+}
