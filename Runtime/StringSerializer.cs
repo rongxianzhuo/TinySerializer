@@ -5,25 +5,27 @@ namespace TinySerializer
     
     public class StringSerializer : Serializer<string>
     {
+
+        private char[] _tempChars;
         
-        public override unsafe void Serialize(Stream stream, string value)
+        public override void Serialize(Stream stream, string value)
         {
             Serializer<int>.Instance.Serialize(stream, value.Length);
-            fixed (char* native = value)
+            foreach (var c in value)
             {
-                WriteBytes(stream, (byte*)native, value.Length * sizeof(char));
+                CharSerializer.Instance.Serialize(stream, c);
             }
         }
 
-        public override unsafe string Deserialize(Stream stream)
+        public override string Deserialize(Stream stream)
         {
             var length = Serializer<int>.Instance.Deserialize(stream);
-            var s = "".PadRight(length);
-            fixed (char* native = s)
+            if (_tempChars == null || _tempChars.Length != length) _tempChars = new char[length];
+            for (var i = 0; i < length; i++)
             {
-                ReadBytes(stream, (byte*)native, length * sizeof(char));
+                _tempChars[i] = CharSerializer.Instance.Deserialize(stream);
             }
-            return s;
+            return new string(_tempChars);
         }
     }
 }
