@@ -11,7 +11,7 @@ namespace TinySerializer
         public override void Serialize(Stream stream, Vector2Int value)
         {
             IntSerializer.Instance.Serialize(stream, value.x);
-            IntSerializer.Instance.Serialize(stream, value.x);
+            IntSerializer.Instance.Serialize(stream, value.y);
         }
 
         public override Vector2Int Deserialize(Stream stream)
