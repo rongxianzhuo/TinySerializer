@@ -1,4 +1,5 @@
 using System.IO;
+using UnityEngine;
 
 namespace TinySerializer
 {
@@ -22,6 +23,7 @@ namespace TinySerializer
             Serializer<uint>.Instance = new UIntSerializer();
             Serializer<float>.Instance = new FloatSerializer();
             Serializer<string>.Instance = new StringSerializer();
+            Serializer<Vector2Int>.Instance = new Vector2IntSerializer();
         }
         
     }
